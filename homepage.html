@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Catalog System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Library Logo">
+                    <span>Library Catalog System</span>
+                </div>
+                <div class="auth">
+                    <button onclick="window.location.href='checkOut.html';">CheckOut Books</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="app">
+        <div id="search">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+        <div id="bookList">
+            <p id="noBooksMessage">No Books are Currently Available</p>
+            <!-- Book list will be displayed here -->
+        </div>
+        <div id="addBookForm">
+            <h2>Add New Book</h2>
+            <input type="text" id="imageInput" placeholder="Image URL">
+            <input type="text" id="titleInput" placeholder="Title">
+            <input type="text" id="authorInput" placeholder="Author">
+            <input type="text" id="isbnInput" placeholder="ISBN">
+            <input type="text" id="genreInput" placeholder="Genre">
+            <input type="text" id="referenceInput" placeholder="ReferenceCode">
+            <button onclick="addBook()">Add Book</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

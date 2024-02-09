@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Out Books</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Library Logo">
+                    <span>Library Catalog System</span>
+                </div>
+                <div class="auth">
+                    <button onclick="window.location.href='homepage.html';">HomePage</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1>Check Out Books</h1>
+    <div id="bookList1">
+        <p id="noBooksMessage">No Books are Currently Available</p>
+        <!-- Book list of books available for checkout will be displayed here -->
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to display books available for checkout
+        function displayBooksForCheckOut(books) {
+            const bookListDiv = document.getElementById('bookList1');
+            bookListDiv.innerHTML = ''; // Clear previous content
+            books.forEach(book => {
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <div class="book-info">
+                        <div class="book-image">
+                            <img src="${book.getImageUrl()}" alt="${book.getTitle()}">
+                        </div>
+                        <div class="book-details">
+                            <strong>Title:</strong> ${book.getTitle()}<br>
+                            <strong>Author:</strong> ${book.getAuthor()}<br>
+                            <strong>ISBN:</strong> ${book.getISBN()}<br>
+                            <strong>Genre:</strong> ${book.getGenre()}<br>
+                        </div>
+                    </div>
+                `;
+                bookListDiv.appendChild(bookDiv);
+            });
+        }
+
+        // Function to display available books for checkout when the page loads
+        window.addEventListener('load', () => {
+            const availableBooks = libraryCatalog.books.filter(book => !book.isAvailable());
+            displayBooksForCheckOut(availableBooks);
+        });
+    </script>
+</body>
+</html>
